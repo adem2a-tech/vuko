@@ -1,0 +1,168 @@
+Crée un site web haut de gamme pour une agence de croissance spécialisée dans l’augmentation du chiffre d’affaires des entreprises via la publicité en ligne.
+
+Le site doit être :
+
+minimaliste
+
+premium
+
+orienté conversion
+
+crédible
+
+agressif commercialement mais élégant
+
+Style visuel :
+
+fond sombre (noir ou gris très profond)
+
+typographie moderne type SaaS luxe
+
+animations fluides
+
+sections aérées
+
+effet “cabinet de stratégie” / “fonds d’investissement”
+
+Objectif du site :
+
+Faire comprendre immédiatement que :
+
+👉 Nous ne faisons pas de marketing
+👉 Nous augmentons le chiffre d’affaires
+
+Le site doit donner l’impression que travailler avec nous = gagner plus d’argent.
+
+Structure demandée :
+
+SECTION 1 — HERO
+
+Titre fort :
+
+"Nous augmentons le chiffre d'affaires des entreprises."
+
+Sous-titre :
+
+"Pas du trafic. Pas des likes. Du revenu."
+
+Bouton :
+
+"Obtenir un audit gratuit"
+
+preuve rapide :
+
+"Déjà +X€ générés pour nos clients"
+
+SECTION 2 — PROBLÈME
+
+Texte :
+
+"La majorité des entreprises font de la publicité.
+Très peu en tirent une vraie croissance."
+
+Lister :
+
+budgets gaspillés
+
+campagnes non rentables
+
+dépendance au hasard
+
+SECTION 3 — SOLUTION
+
+Titre :
+
+"Nous transformons la publicité en machine à cash."
+
+Expliquer que :
+
+on pilote par le ROAS
+
+on optimise les funnels
+
+on scale uniquement ce qui génère du profit
+
+SECTION 4 — RÉSULTATS
+
+Afficher :
+
++X% croissance moyenne
+
+ROAS moyen
+
+exemples de croissance de CA
+
+Style = chiffres très visibles
+
+SECTION 5 — MÉTHODE
+
+Process en 3 étapes :
+
+Audit
+
+Optimisation
+
+Scale
+
+SECTION 6 — POSITIONNEMENT
+
+Texte :
+
+"Nous ne travaillons pas avec tout le monde.
+Seulement les entreprises prêtes à croître."
+
+SECTION 7 — CALL TO ACTION
+
+Bloc premium :
+
+"Prêt à augmenter votre chiffre d’affaires ?"
+
+Bouton :
+
+"Réserver un appel stratégique"
+
+SECTION 8 — FOOTER
+
+Sobre, premium, crédible.
+
+Contraintes techniques :
+
+responsive
+
+rapide
+
+SEO ready
+
+design moderne type startup US
+
+animations légères
+
+code propre
+
+Ajouter :
+
+meta title orienté performance
+
+meta description orientée croissance
+
+structure SEO claire
+
+Tonalité :
+
+Directe.
+Axée business.
+Sans jargon marketing inutile.
+
+But final :
+
+Donner envie de prendre rendez-vous immédiatement.
+
+OPTION
+
+Si tu veux, je peux te faire la version :
+
+👉 ultra luxe
+👉 ultra agressive
+👉 orientée closing
+
+(selon ton positioning réel)
