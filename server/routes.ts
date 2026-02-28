@@ -24,5 +24,14 @@ export async function registerRoutes(
     }
   });
 
+  app.get(api.leads.list.path, async (_req, res) => {
+    try {
+      const list = await storage.getLeads();
+      res.status(200).json(list);
+    } catch (err) {
+      throw err;
+    }
+  });
+
   return httpServer;
 }

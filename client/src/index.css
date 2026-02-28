@@ -9,33 +9,34 @@
     --font-display: 'Syne', sans-serif;
     --font-body: 'DM Sans', sans-serif;
 
-    --background: 0 0% 3%;
-    --foreground: 0 0% 98%;
+    /* DA confiance : fond gris doux (pas blanc), gris proche noir (logo), moins lumineux */
+    --background: 220 12% 91%;
+    --foreground: 0 0% 12%;
 
-    --card: 0 0% 6%;
-    --card-foreground: 0 0% 98%;
+    --card: 0 0% 97%;
+    --card-foreground: 0 0% 12%;
 
-    --popover: 0 0% 6%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 220 12% 95%;
+    --popover-foreground: 0 0% 12%;
 
-    --primary: 73 100% 50%;
-    --primary-foreground: 0 0% 0%;
+    --primary: 221 83% 19%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 12%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 220 10% 88%;
+    --secondary-foreground: 0 0% 12%;
 
-    --muted: 0 0% 12%;
-    --muted-foreground: 0 0% 65%;
+    --muted: 220 10% 88%;
+    --muted-foreground: 0 0% 38%;
 
-    --accent: 73 100% 50%;
-    --accent-foreground: 0 0% 0%;
+    --accent: 221 83% 19%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 12%;
-    --input: 0 0% 12%;
-    --ring: 73 100% 50%;
+    --border: 220 10% 84%;
+    --input: 220 10% 84%;
+    --ring: 221 83% 19%;
 
     --radius: 0.5rem;
   }
@@ -57,7 +58,7 @@
 
 @layer utilities {
   .text-glow {
-    text-shadow: 0 0 40px hsl(var(--primary) / 0.4);
+    text-shadow: 0 0 30px hsl(var(--primary) / 0.25);
   }
   
   .box-glow {
@@ -65,14 +66,74 @@
   }
 
   .glass-panel {
-    @apply bg-white/5 backdrop-blur-lg border border-white/10;
+    @apply bg-white/70 backdrop-blur-lg border border-border;
   }
   
   .text-gradient {
     @apply bg-clip-text text-transparent bg-gradient-to-br from-white to-white/50;
   }
+
+  .marquee-right {
+    animation: marquee-right 25s linear infinite;
+  }
+  .marquee-left {
+    animation: marquee-left 25s linear infinite;
+  }
+
+  .logo-tiktok-contour {
+    filter: drop-shadow(0 0 1px rgba(0,0,0,0.3)) drop-shadow(0 0 2px rgba(0,0,0,0.2));
+  }
+
+  .logo-text-detour {
+    font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: hsl(var(--foreground));
+    -webkit-text-stroke: 1px hsl(var(--foreground) / 0.3);
+    paint-order: stroke fill;
+  }
+
+  .logo-label {
+    font-family: var(--font-display);
+    font-size: 0.6em;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: hsl(var(--primary));
+    -webkit-text-stroke: 1px hsl(var(--primary) / 0.4);
+    paint-order: stroke fill;
+  }
+}
+
+@keyframes marquee-right {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes marquee-left {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
 }
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+}
+
+@media (min-width: 768px) {
+  html {
+    scroll-padding-top: 6rem;
+  }
+}
+
+/* Transitions fluides : navigation et liens */
+.nav-link {
+  transition: color 0.3s ease-out, background-color 0.3s ease-out, transform 0.25s ease-out;
+}
+.nav-link:hover {
+  transform: translateY(-1px);
+}
+
+/* Transitions globales sur les ancres (scroll fluide déjà via scroll-behavior) */
+a[href^="#"] {
+  transition: opacity 0.2s ease-out;
 }
