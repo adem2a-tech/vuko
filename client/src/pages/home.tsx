@@ -524,7 +524,7 @@ export default function Home() {
         <section id="about" className="py-28 px-6 relative scroll-mt-24 border-y border-border">
           <div className="max-w-7xl mx-auto text-center mb-16">
             <FadeIn>
-              <motion.span initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }} className="inline-block px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold uppercase tracking-[0.2em] mb-4">Vos partenaires de croissance</span>
+              <motion.span initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }} className="inline-block px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold uppercase tracking-[0.2em] mb-4">Vos partenaires de croissance</motion.span>
               <motion.h2 initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }} className="text-2xl md:text-4xl font-display font-black mb-4 tracking-tighter italic uppercase text-foreground">VUKO transformera votre business<span className="text-primary">.</span></motion.h2>
               <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }} className="text-base text-muted-foreground max-w-2xl mx-auto">Seulement pour les entreprises prêtes à dominer leur marché. Nous construisons la confiance par les résultats.</motion.p>
             </FadeIn>
