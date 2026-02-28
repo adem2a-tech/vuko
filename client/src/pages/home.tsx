@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import logoPath from "@assets/image_1772238017146.png";
 import { 
   ArrowRight, 
   TrendingUp, 
@@ -68,8 +69,15 @@ export default function Home() {
       {/* NAVBAR */}
       <nav className="fixed top-0 w-full z-50 glass-panel border-x-0 border-t-0">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          <div className="font-display font-black text-2xl tracking-tighter">
-            VUKO<span className="text-primary">.</span>
+          <div className="flex items-center gap-8">
+            <div className="font-display font-black text-2xl tracking-tighter flex items-center gap-2">
+              <img src={logoPath} alt="VUKO" className="h-8 w-auto invert" />
+            </div>
+            <div className="hidden md:flex items-center gap-6">
+              <a href="#services" className="text-sm font-bold uppercase tracking-widest text-white/50 hover:text-primary transition-colors">Services</a>
+              <a href="#equipe" className="text-sm font-bold uppercase tracking-widest text-white/50 hover:text-primary transition-colors">Équipe</a>
+              <a href="#contact" className="text-sm font-bold uppercase tracking-widest text-white/50 hover:text-primary transition-colors">Contact</a>
+            </div>
           </div>
           <a href="#contact">
             <Button className="rounded-full font-bold px-6 bg-white text-black hover:bg-primary hover:text-black transition-all duration-300">
@@ -84,7 +92,10 @@ export default function Home() {
         <section className="min-h-screen flex flex-col justify-center px-6 pt-20">
           <div className="max-w-5xl mx-auto w-full">
             <FadeIn>
-              <h1 className="text-6xl md:text-8xl lg:text-[7.5rem] font-black leading-[1.05] tracking-tighter mb-8">
+              <div className="inline-block px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold uppercase tracking-[0.2em] mb-8">
+                Agence Publicitaire Haute Performance
+              </div>
+              <h1 className="text-6xl md:text-8xl lg:text-[7.5rem] font-black leading-[1.05] tracking-tighter mb-8 italic">
                 Votre CA <span className="text-primary text-glow">explose.</span><br />
                 <span className="text-white/40">Ou on ne travaille</span><br />
                 <span className="text-white/40">pas ensemble.</span>
@@ -155,10 +166,10 @@ export default function Home() {
         </section>
 
         {/* SERVICES SECTION */}
-        <section className="py-32 px-6 relative">
+        <section id="services" className="py-32 px-6 relative">
           <div className="max-w-7xl mx-auto">
             <FadeIn>
-              <h2 className="text-4xl md:text-6xl font-display font-black mb-4">Ce qu'on fait.</h2>
+              <h2 className="text-4xl md:text-6xl font-display font-black mb-4 tracking-tighter uppercase italic">Ce qu'on fait<span className="text-primary">.</span></h2>
               <p className="text-xl text-muted-foreground mb-16 max-w-2xl">L'écosystème complet pour transformer des inconnus en clients fidèles.</p>
             </FadeIn>
 
@@ -200,10 +211,10 @@ export default function Home() {
         </section>
 
         {/* TEAM SECTION */}
-        <section className="py-32 px-6 bg-black relative border-y border-white/5">
+        <section id="equipe" className="py-32 px-6 bg-black relative border-y border-white/5">
           <div className="max-w-7xl mx-auto">
             <FadeIn>
-              <h2 className="text-4xl md:text-6xl font-display font-black mb-16 text-center">L'Équipe d'Élite.</h2>
+              <h2 className="text-4xl md:text-6xl font-display font-black mb-16 text-center tracking-tighter uppercase italic">L'Équipe d'Élite<span className="text-primary">.</span></h2>
             </FadeIn>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -351,8 +362,8 @@ export default function Home() {
       {/* FOOTER */}
       <footer className="border-t border-white/5 bg-black py-12 px-6">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="font-display font-black text-2xl tracking-tighter text-white/50">
-            VUKO<span className="text-primary">.</span>
+          <div className="font-display font-black text-2xl tracking-tighter text-white/50 flex items-center gap-2">
+            <img src={logoPath} alt="VUKO" className="h-6 w-auto opacity-50 invert" />
           </div>
           
           <div className="flex items-center space-x-6 text-white/50">
