@@ -23,7 +23,8 @@ import {
   Lightbulb,
   Sparkles,
   Menu,
-  X
+  X,
+  MessageCircle
 } from "lucide-react";
 import { useCreateLead } from "@/hooks/use-leads";
 import { Button } from "@/components/ui/button";
@@ -41,6 +42,39 @@ const FadeIn = ({ children, delay = 0, className = "" }: { children: React.React
     {children}
   </motion.div>
 );
+
+const container = { hidden: { opacity: 0 }, visible: (i = 1) => ({ opacity: 1, transition: { staggerChildren: 0.12, delayChildren: 0.04 * i } }) };
+const item = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
+
+const AnimateText = ({ children, className = "" }: { children: string; className?: string }) => {
+  const words = children.split(" ");
+  return (
+    <motion.span className={className} variants={container} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-40px" }}>
+      {words.map((word, i) => (
+        <motion.span key={i} variants={item} style={{ display: "inline-block", marginRight: "0.25em" }}>
+          {word}
+        </motion.span>
+      ))}
+    </motion.span>
+  );
+};
+
+const SlideIn = ({ children, direction = "up", delay = 0, className = "" }: { children: React.ReactNode; direction?: "up" | "down" | "left" | "right"; delay?: number; className?: string }) => {
+  const d = { up: 40, down: -40, left: 40, right: -40 };
+  const x = direction === "left" ? -d.left : direction === "right" ? d.right : 0;
+  const y = direction === "up" ? d.up : direction === "down" ? d.down : 0;
+  return (
+    <motion.div
+      initial={{ opacity: 0, x, y }}
+      whileInView={{ opacity: 1, x: 0, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.6, delay, ease: [0.22, 0.61, 0.36, 1] }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+};
 
 function CountUp({
   end,
@@ -296,15 +330,22 @@ export default function Home() {
         <section className="min-h-screen flex flex-col justify-center px-6 pt-20">
           <div className="max-w-5xl mx-auto w-full text-center">
             <FadeIn>
-              <div className="inline-block px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary text-xs font-bold uppercase tracking-[0.2em] mb-8">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="inline-block px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary text-xs font-bold uppercase tracking-[0.2em] mb-8"
+              >
                 L'agence qu'il faut contacter
-              </div>
+              </motion.div>
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-black leading-[1.05] tracking-tighter mb-6 italic text-foreground">
-                Nous augmentons le <span className="text-primary text-glow">chiffre d'affaires.</span>
+                <AnimateText className="inline">Nous augmentons le </AnimateText><motion.span className="text-primary text-glow" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.6, duration: 0.5 }}>chiffre d'affaires.</motion.span>
               </h1>
-              <p className="text-base md:text-lg text-muted-foreground font-light tracking-tight mb-10 max-w-2xl mx-auto">
-                Pas du trafic. Pas des likes. <span className="text-foreground font-medium italic">Du revenu.</span>
-              </p>
+              <SlideIn delay={0.2}>
+                <p className="text-base md:text-lg text-muted-foreground font-light tracking-tight mb-10 max-w-2xl mx-auto">
+                  Pas du trafic. Pas des likes. <span className="text-foreground font-medium italic">Du revenu.</span>
+                </p>
+              </SlideIn>
               <div className="flex flex-col md:flex-row items-center justify-center gap-6">
                 <a href="#contact" className="inline-block">
                   <Button size="lg" className="h-12 px-8 text-base rounded-full bg-primary text-primary-foreground font-bold hover:bg-primary/90 hover:scale-105 transition-all duration-300 shadow-lg">
@@ -446,9 +487,11 @@ export default function Home() {
                 </div>
               </FadeIn>
             </div>
-            <p className="text-center mt-12 text-lg font-bold uppercase tracking-[0.2em] text-slate-300 leading-relaxed">
+            <SlideIn delay={0.1}>
+            <p className="text-center mt-12 text-lg md:text-xl font-bold uppercase tracking-[0.2em] text-slate-300 leading-relaxed">
               Évitez le gauche. Passez à VUKO — ça fait des ventes.
             </p>
+            </SlideIn>
           </div>
         </section>
 
@@ -481,9 +524,9 @@ export default function Home() {
         <section id="about" className="py-28 px-6 relative scroll-mt-24 border-y border-border">
           <div className="max-w-7xl mx-auto text-center mb-16">
             <FadeIn>
-              <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold uppercase tracking-[0.2em] mb-4">Vos partenaires de croissance</span>
-              <h2 className="text-2xl md:text-4xl font-display font-black mb-4 tracking-tighter italic uppercase text-foreground">VUKO transformera votre business<span className="text-primary">.</span></h2>
-              <p className="text-base text-muted-foreground max-w-2xl mx-auto">Seulement pour les entreprises prêtes à dominer leur marché. Nous construisons la confiance par les résultats.</p>
+              <motion.span initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }} className="inline-block px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold uppercase tracking-[0.2em] mb-4">Vos partenaires de croissance</span>
+              <motion.h2 initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }} className="text-2xl md:text-4xl font-display font-black mb-4 tracking-tighter italic uppercase text-foreground">VUKO transformera votre business<span className="text-primary">.</span></motion.h2>
+              <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }} className="text-base text-muted-foreground max-w-2xl mx-auto">Seulement pour les entreprises prêtes à dominer leur marché. Nous construisons la confiance par les résultats.</motion.p>
             </FadeIn>
           </div>
 
@@ -539,11 +582,17 @@ export default function Home() {
           <div className="max-w-4xl mx-auto text-center mb-12">
             <FadeIn>
               <p className="text-xs font-bold uppercase tracking-[0.25em] text-primary mb-4">La bonne agence à contacter</p>
-              <h2 className="text-3xl md:text-5xl font-display font-black mb-4 leading-tight italic uppercase text-foreground">
+              <motion.h2
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, ease: [0.22, 0.61, 0.36, 1] }}
+                className="text-3xl md:text-5xl font-display font-black mb-4 leading-tight italic uppercase text-foreground"
+              >
                 Prêt à exploser ?<br />
                 Appel gratuit.
-              </h2>
-              <p className="text-muted-foreground max-w-xl mx-auto">Confiance, expertise et résultats. Réservez votre appel gratuit.</p>
+              </motion.h2>
+              <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.2, duration: 0.5 }} className="text-muted-foreground max-w-xl mx-auto">Confiance, expertise et résultats. Réservez votre appel gratuit.</motion.p>
             </FadeIn>
           </div>
 
@@ -604,8 +653,24 @@ export default function Home() {
                 <p className="text-center text-xs text-muted-foreground mt-4 space-y-1">
                   <span className="block font-semibold text-foreground/80">Sans engagement.</span>
                   <span className="block">Réponse rapide, conseil personnalisé. L’agence de confiance pour votre croissance.</span>
-                  <span className="block mt-2 text-muted-foreground/90">Lors de la redirection vers WhatsApp, un message avec votre nom et téléphone est envoyé pour que nous sachions qui vous êtes.</span>
                 </p>
+                <motion.div
+                  initial={{ opacity: 0, y: 20, scale: 0.98 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  viewport={{ once: true, margin: "-20px" }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  className="mt-6 p-5 md:p-6 rounded-2xl bg-[#075E54]/10 border-2 border-[#25D366]/30 flex flex-col sm:flex-row items-center gap-4 text-left"
+                >
+                  <div className="shrink-0 w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-[#25D366] flex items-center justify-center shadow-lg">
+                    <MessageCircle className="w-8 h-8 md:w-9 md:h-9 text-white" strokeWidth={2} />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-sm md:text-base font-bold text-foreground mb-0.5">Redirection WhatsApp</p>
+                    <p className="text-sm md:text-lg text-muted-foreground leading-relaxed">
+                      Lors de la redirection, un message avec votre <strong className="text-foreground">nom</strong> et <strong className="text-foreground">téléphone</strong> est envoyé pour que nous sachions qui vous êtes.
+                    </p>
+                  </div>
+                </motion.div>
               </form>
             </div>
           </FadeIn>
@@ -615,7 +680,13 @@ export default function Home() {
 
       {/* FOOTER */}
       <footer className="border-t border-border bg-secondary/50 py-12 px-6">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4 }}
+          className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8"
+        >
           <div className="flex items-center gap-2">
             <div className="flex flex-col items-start leading-none">
             <span className="text-[10px] font-display font-semibold uppercase tracking-widest text-primary">VUKO.</span>
@@ -630,7 +701,7 @@ export default function Home() {
           <div className="text-muted-foreground text-[10px] font-bold uppercase tracking-[0.2em] text-center md:text-right">
             &copy; {new Date().getFullYear()} VUKO. AGENCY — L'agence de confiance pour votre croissance.
           </div>
-        </div>
+        </motion.div>
       </footer>
     </div>
   );

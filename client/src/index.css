@@ -137,3 +137,20 @@ html {
 a[href^="#"] {
   transition: opacity 0.2s ease-out;
 }
+
+/* Animations d'entrée texte (utilisées avec Framer Motion ou classes) */
+@keyframes text-reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
